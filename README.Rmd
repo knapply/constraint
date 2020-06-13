@@ -195,10 +195,7 @@ data.frame(
 
 ## "Whole Network"?
 
-What UCINET is calling "Whole Network" is misleading. It's measuring the "extended" ego networks (order = 2).
-
-"Whole Network" may be representative of the other "Whole Network" Structural Holes measures it produces, but it's not relevant to Burt's Constraint.
-
+What UCINET is calling "Whole Network" is misleading.
 
 ```{r}
 ego_g <- make_ego_graph(strike_g, nodes = "Xavier")[[1L]]
@@ -211,6 +208,11 @@ extended_ego_g <- make_ego_graph(strike_g, order = 2L, nodes = "Xavier")[[1L]]
 plot_igraph(extended_ego_g, main = "Xavier's Extended Ego")
 ```
 
+### Extended Ego
+
+However UCINET calulates it, "Whole Network" and `igraph::constraint()` measure the "extended" ego networks (order = 2).
+
+
 ```{r}
 extended_ego_constraint <- function(g, ...) {
   ego_constraint(g, .order = 2L, ...)
@@ -219,7 +221,7 @@ extended_ego_constraint <- function(g, ...) {
 extended_ego_constraint(strike_g)
 ```
 
-### Confirmation
+#### Confirmation
 
 ```{r}
 identical(
@@ -231,6 +233,8 @@ identical(
   ucinet_whole_results
 )
 ```
+
+"Whole Network" may describe UCINET's other "Whole Network" Structural Holes metrics, but not constraint.
 
 ```{r}
 data.frame(

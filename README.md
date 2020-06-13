@@ -11,7 +11,7 @@ Brendan Knapp
       - [`{igraph}` Replication](#igraph-replication-1)
       - [Confirmation](#confirmation-1)
       - [“Whole Network”?](#whole-network-1)
-          - [Confirmation](#confirmation-2)
+          - [Extended Ego](#extended-ego)
   - [Maximum Constraint](#maximum-constraint)
 
 ``` r
@@ -266,12 +266,7 @@ data.frame(
 
 ## “Whole Network”?
 
-What UCINET is calling “Whole Network” is misleading. It’s measuring the
-“extended” ego networks (order = 2).
-
-“Whole Network” may be representative of the other “Whole Network”
-Structural Holes measures it produces, but it’s not relevant to Burt’s
-Constraint.
+What UCINET is calling “Whole Network” is misleading.
 
 ``` r
 ego_g <- make_ego_graph(strike_g, nodes = "Xavier")[[1L]]
@@ -287,6 +282,11 @@ plot_igraph(extended_ego_g, main = "Xavier's Extended Ego")
 
 <img src="README_files/figure-gfm/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
+### Extended Ego
+
+However UCINET calulates it, “Whole Network” and `igraph::constraint()`
+measure the “extended” ego networks (order = 2).
+
 ``` r
 extended_ego_constraint <- function(g, ...) {
   ego_constraint(g, .order = 2L, ...)
@@ -297,7 +297,7 @@ extended_ego_constraint(strike_g)
 
     #>  [1] 0.953 0.405 1.000 0.866 0.198 0.536 0.482 0.469 0.238 0.482 0.953 0.500 0.506 0.500 0.464 0.500 0.326 0.562 0.771 0.866 0.583 0.500 0.866 0.418
 
-### Confirmation
+#### Confirmation
 
 ``` r
 identical(
@@ -316,6 +316,9 @@ identical(
 ```
 
     #> [1] TRUE
+
+“Whole Network” may describe UCINET’s other “Whole Network” Structural
+Holes metrics, but not constraint.
 
 ``` r
 data.frame(
