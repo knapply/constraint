@@ -82,7 +82,7 @@ ucinet_ego_results <- c(
 ## `{igraph}` Replication
 
 Extract each vertex’s ego (order = 1) network and run
-`igraph::constraint()` them individually.
+`igraph::constraint()` on them individually.
 
 ``` r
 ego_constraint <- function(g, .order = 1L, .round = 3L, .nm = FALSE) {
