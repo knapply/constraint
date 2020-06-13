@@ -11,8 +11,6 @@ Brendan Knapp
       - [`{igraph}` Replication](#igraph-replication-1)
       - [Confirmation](#confirmation-1)
       - [“Whole Network”?](#whole-network-1)
-          - [Ego](#ego)
-          - [Extended Ego](#extended-ego)
       - [Confirmation](#confirmation-2)
   - [Maximum Constraint?](#maximum-constraint)
 
@@ -103,7 +101,9 @@ ego_constraint <- function(g, .order = 1L, .round = 3L, .nm = FALSE) {
   out <- round(out, .round)
   if (.nm) out else unname(out)
 }
+```
 
+``` r
 ego_constraint(strike_g, .round = 2)
 ```
 
@@ -264,34 +264,40 @@ What UCINET is calling “Whole Network” is misleading. It’s measuring the
 “extended” ego networks (order = 2).
 
 “Whole Network” may be representative of the other “Whole Network”
-Structural Holes measures is produces, but it’s not relevant to Burt’s
+Structural Holes measures it produces, but it’s not relevant to Burt’s
 Constraint.
-
-### Ego
 
 ``` r
 ego_g <- make_ego_graph(strike_g, nodes = "Xavier")[[1L]]
 plot_igraph(ego_g, main = "Xavier's Ego")
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
-
-### Extended Ego
+<img src="constraint_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 ``` r
 extended_ego_g <- make_ego_graph(strike_g, order = 2L, nodes = "Xavier")[[1L]]
 plot_igraph(extended_ego_g, main = "Xavier's Extended Ego")
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
-## Confirmation
+`igraph::constraint()` on “extended” egos:
 
 ``` r
 extended_ego_constraint <- function(g, ...) {
   ego_constraint(g, .order = 2L, ...)
 }
+```
 
+``` r
+extended_ego_constraint(strike_g)
+```
+
+    #>  [1] 0.953 0.405 1.000 0.866 0.198 0.536 0.482 0.469 0.238 0.482 0.953 0.500 0.506 0.500 0.464 0.500 0.326 0.562 0.771 0.866 0.583 0.500 0.866 0.418
+
+## Confirmation
+
+``` r
 data.frame(
   `igraph::constraint()` = round(constraint(strike_g), 3L),
   `extended_ego_constraint()` = extended_ego_constraint(strike_g),
@@ -359,7 +365,7 @@ g <- graph_from_edgelist(el, directed = FALSE)
 plot(g)
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
 ``` r
 g %>% ego_constraint()
@@ -384,7 +390,7 @@ g <- graph_from_edgelist(el, directed = FALSE)
 plot(g)
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
 
 ``` r
 g %>% ego_constraint()
@@ -410,7 +416,7 @@ g <- graph_from_edgelist(el, directed = FALSE)
 plot(g)
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
 ``` r
 g %>% ego_constraint()
