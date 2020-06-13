@@ -364,7 +364,8 @@ el <- matrix(
     1, 3, 
     2, 3), ncol = 2L, byrow = TRUE)
 
-g <- graph_from_edgelist(el, directed = FALSE) 
+g <- graph_from_edgelist(el, directed = FALSE)
+vertex_attr(g, "name") <- letters[seq_len(vcount(g))]
 plot(g)
 ```
 
@@ -372,6 +373,7 @@ plot(g)
 
 ``` r
 data.frame(
+    name = vertex_attr(g, "name"),
     Ego = ego_constraint(g),
     `"Whole Network"/Extended Ego` = constraint(g),
     check.names = FALSE,
@@ -379,11 +381,11 @@ data.frame(
 ) %>% as_kbl()
 ```
 
-|   Ego | “Whole Network”/Extended Ego |
-| ----: | ---------------------------: |
-| 1.125 |                        1.125 |
-| 1.125 |                        1.125 |
-| 1.125 |                        1.125 |
+| name |   Ego | “Whole Network”/Extended Ego |
+| :--- | ----: | ---------------------------: |
+| a    | 1.125 |                        1.125 |
+| b    | 1.125 |                        1.125 |
+| c    | 1.125 |                        1.125 |
 
 ``` r
 el <- matrix(
@@ -393,6 +395,7 @@ el <- matrix(
     3, 4), ncol = 2L, byrow = TRUE)
 
 g <- graph_from_edgelist(el, directed = FALSE) 
+vertex_attr(g, "name") <- letters[seq_len(vcount(g))]
 plot(g)
 ```
 
@@ -400,6 +403,7 @@ plot(g)
 
 ``` r
 data.frame(
+    name = vertex_attr(g, "name"),
     Ego = ego_constraint(g),
     `"Whole Network"/Extended Ego` = constraint(g),
     check.names = FALSE,
@@ -407,12 +411,12 @@ data.frame(
 ) %>% as_kbl()
 ```
 
-|   Ego | “Whole Network”/Extended Ego |
-| ----: | ---------------------------: |
-| 1.125 |                    1.0069444 |
-| 1.125 |                    1.0069444 |
-| 0.611 |                    0.6111111 |
-| 1.000 |                    1.0000000 |
+| name |   Ego | “Whole Network”/Extended Ego |
+| :--- | ----: | ---------------------------: |
+| a    | 1.125 |                    1.0069444 |
+| b    | 1.125 |                    1.0069444 |
+| c    | 0.611 |                    0.6111111 |
+| d    | 1.000 |                    1.0000000 |
 
 ``` r
 el <- matrix(
@@ -423,6 +427,7 @@ el <- matrix(
     4, 5), ncol = 2L, byrow = TRUE)
 
 g <- graph_from_edgelist(el, directed = FALSE) 
+vertex_attr(g, "name") <- letters[seq_len(vcount(g))]
 plot(g)
 ```
 
@@ -430,6 +435,7 @@ plot(g)
 
 ``` r
 data.frame(
+    name = vertex_attr(g, "name"),
     Ego = ego_constraint(g),
     `"Whole Network"/Extended Ego` = constraint(g),
     check.names = FALSE,
@@ -437,10 +443,10 @@ data.frame(
 ) %>% as_kbl()
 ```
 
-|   Ego | “Whole Network”/Extended Ego |
-| ----: | ---------------------------: |
-| 1.125 |                    1.0069444 |
-| 1.125 |                    1.0069444 |
-| 0.611 |                    0.6111111 |
-| 0.500 |                    0.5000000 |
-| 1.000 |                    1.0000000 |
+| name |   Ego | “Whole Network”/Extended Ego |
+| :--- | ----: | ---------------------------: |
+| a    | 1.125 |                    1.0069444 |
+| b    | 1.125 |                    1.0069444 |
+| c    | 0.611 |                    0.6111111 |
+| d    | 0.500 |                    0.5000000 |
+| e    | 1.000 |                    1.0000000 |
