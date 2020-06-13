@@ -5,13 +5,15 @@ Brendan Knapp
   - [Ego Model](#ego-model)
       - [UCINET Results](#ucinet-results)
       - [`{igraph}` Replication](#igraph-replication)
+      - [Confirmation](#confirmation)
   - [“Whole Network”](#whole-network)
       - [UCINET Results](#ucinet-results-1)
       - [`{igraph}` Replication](#igraph-replication-1)
+      - [Confirmation](#confirmation-1)
       - [“Whole Network”?](#whole-network-1)
           - [Ego](#ego)
           - [Extended Ego](#extended-ego)
-      - [Confirmation](#confirmation)
+      - [Confirmation](#confirmation-2)
   - [Maximum Constraint?](#maximum-constraint)
 
 ``` r
@@ -102,6 +104,14 @@ ego_constraint <- function(g, .order = 1L, .round = 3L, .nm = FALSE) {
   if (.nm) out else unname(out)
 }
 
+ego_constraint(strike_g, .round = 2)
+```
+
+    #>  [1] 1.12 0.56 1.00 0.93 0.24 0.84 0.61 0.61 0.29 0.61 1.12 0.50 0.61 0.50 0.56 0.50 0.41 0.84 1.12 0.93 0.58 0.50 0.93 0.52
+
+## Confirmation
+
+``` r
 data.frame(
   name = vertex_attr(strike_g, "name"), 
   `UCINET "Ego"` = round(ucinet_ego_results, 2),
@@ -201,6 +211,8 @@ constraint(strike_g)
     #> Alejandro      Paul   Eduardo      John 
     #> 0.5833333 0.5000000 0.8657407 0.4181009
 
+## Confirmation
+
 ``` r
 data.frame(
   name = vertex_attr(strike_g, "name"),
@@ -262,7 +274,7 @@ ego_g <- make_ego_graph(strike_g, nodes = "Xavier")[[1L]]
 plot_igraph(ego_g, main = "Xavier's Ego")
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 ### Extended Ego
 
@@ -271,7 +283,7 @@ extended_ego_g <- make_ego_graph(strike_g, order = 2L, nodes = "Xavier")[[1L]]
 plot_igraph(extended_ego_g, main = "Xavier's Extended Ego")
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 ## Confirmation
 
@@ -347,7 +359,7 @@ g <- graph_from_edgelist(el, directed = FALSE)
 plot(g)
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 ``` r
 g %>% ego_constraint()
@@ -372,7 +384,7 @@ g <- graph_from_edgelist(el, directed = FALSE)
 plot(g)
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
 
 ``` r
 g %>% ego_constraint()
@@ -398,7 +410,7 @@ g <- graph_from_edgelist(el, directed = FALSE)
 plot(g)
 ```
 
-<img src="constraint_files/figure-gfm/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="constraint_files/figure-gfm/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 ``` r
 g %>% ego_constraint()
