@@ -104,37 +104,37 @@ ego_constraint <- function(g, .order = 1L, .round = 3L, .nm = FALSE) {
 
 data.frame(
   name = vertex_attr(strike_g, "name"), 
-  ucinet = round(ucinet_ego_results, 2),
+  `UCINET "Ego"` = round(ucinet_ego_results, 2),
   `ego_constraint()` = ego_constraint(strike_g, .round = 2),
   check.names = FALSE
 )
 ```
 
-    #>         name ucinet ego_constraint()
-    #> 1     Xavier   1.12             1.12
-    #> 2    Utrecht   0.56             0.56
-    #> 3      Frank   1.00             1.00
-    #> 4    Domingo   0.93             0.93
-    #> 5       Norm   0.24             0.24
-    #> 6        Hal   0.84             0.84
-    #> 7       Russ   0.61             0.61
-    #> 8       Karl   0.61             0.61
-    #> 9        Bob   0.29             0.29
-    #> 10     Quint   0.61             0.61
-    #> 11    Wendle   1.12             1.12
-    #> 12     Ozzie   0.50             0.50
-    #> 13       Ike   0.61             0.61
-    #> 14       Ted   0.50             0.50
-    #> 15       Sam   0.56             0.56
-    #> 16      Vern   0.50             0.50
-    #> 17      Gill   0.41             0.41
-    #> 18     Lanny   0.84             0.84
-    #> 19      Mike   1.12             1.12
-    #> 20    Carlos   0.93             0.93
-    #> 21 Alejandro   0.58             0.58
-    #> 22      Paul   0.50             0.50
-    #> 23   Eduardo   0.93             0.93
-    #> 24      John   0.52             0.52
+    #>         name UCINET "Ego" ego_constraint()
+    #> 1     Xavier         1.12             1.12
+    #> 2    Utrecht         0.56             0.56
+    #> 3      Frank         1.00             1.00
+    #> 4    Domingo         0.93             0.93
+    #> 5       Norm         0.24             0.24
+    #> 6        Hal         0.84             0.84
+    #> 7       Russ         0.61             0.61
+    #> 8       Karl         0.61             0.61
+    #> 9        Bob         0.29             0.29
+    #> 10     Quint         0.61             0.61
+    #> 11    Wendle         1.12             1.12
+    #> 12     Ozzie         0.50             0.50
+    #> 13       Ike         0.61             0.61
+    #> 14       Ted         0.50             0.50
+    #> 15       Sam         0.56             0.56
+    #> 16      Vern         0.50             0.50
+    #> 17      Gill         0.41             0.41
+    #> 18     Lanny         0.84             0.84
+    #> 19      Mike         1.12             1.12
+    #> 20    Carlos         0.93             0.93
+    #> 21 Alejandro         0.58             0.58
+    #> 22      Paul         0.50             0.50
+    #> 23   Eduardo         0.93             0.93
+    #> 24      John         0.52             0.52
 
 ``` r
 identical(
@@ -204,36 +204,38 @@ constraint(strike_g)
 ``` r
 data.frame(
   name = vertex_attr(strike_g, "name"),
-  ucinet = ucinet_whole_results,
-  igraph = round(constraint(strike_g), 3L)
+  `UCINET "Whole Network"` = ucinet_whole_results,
+  `igraph::constraint()` = round(constraint(strike_g), 3L),
+  check.names = FALSE,
+  row.names = NULL
 )
 ```
 
-    #>                name ucinet igraph
-    #> Xavier       Xavier  0.953  0.953
-    #> Utrecht     Utrecht  0.405  0.405
-    #> Frank         Frank  1.000  1.000
-    #> Domingo     Domingo  0.866  0.866
-    #> Norm           Norm  0.198  0.198
-    #> Hal             Hal  0.536  0.536
-    #> Russ           Russ  0.482  0.482
-    #> Karl           Karl  0.469  0.469
-    #> Bob             Bob  0.238  0.238
-    #> Quint         Quint  0.482  0.482
-    #> Wendle       Wendle  0.953  0.953
-    #> Ozzie         Ozzie  0.500  0.500
-    #> Ike             Ike  0.506  0.506
-    #> Ted             Ted  0.500  0.500
-    #> Sam             Sam  0.464  0.464
-    #> Vern           Vern  0.500  0.500
-    #> Gill           Gill  0.326  0.326
-    #> Lanny         Lanny  0.562  0.562
-    #> Mike           Mike  0.771  0.771
-    #> Carlos       Carlos  0.866  0.866
-    #> Alejandro Alejandro  0.583  0.583
-    #> Paul           Paul  0.500  0.500
-    #> Eduardo     Eduardo  0.866  0.866
-    #> John           John  0.418  0.418
+    #>         name UCINET "Whole Network" igraph::constraint()
+    #> 1     Xavier                  0.953                0.953
+    #> 2    Utrecht                  0.405                0.405
+    #> 3      Frank                  1.000                1.000
+    #> 4    Domingo                  0.866                0.866
+    #> 5       Norm                  0.198                0.198
+    #> 6        Hal                  0.536                0.536
+    #> 7       Russ                  0.482                0.482
+    #> 8       Karl                  0.469                0.469
+    #> 9        Bob                  0.238                0.238
+    #> 10     Quint                  0.482                0.482
+    #> 11    Wendle                  0.953                0.953
+    #> 12     Ozzie                  0.500                0.500
+    #> 13       Ike                  0.506                0.506
+    #> 14       Ted                  0.500                0.500
+    #> 15       Sam                  0.464                0.464
+    #> 16      Vern                  0.500                0.500
+    #> 17      Gill                  0.326                0.326
+    #> 18     Lanny                  0.562                0.562
+    #> 19      Mike                  0.771                0.771
+    #> 20    Carlos                  0.866                0.866
+    #> 21 Alejandro                  0.583                0.583
+    #> 22      Paul                  0.500                0.500
+    #> 23   Eduardo                  0.866                0.866
+    #> 24      John                  0.418                0.418
 
 ``` r
 identical(
@@ -281,37 +283,37 @@ extended_ego_constraint <- function(g, ...) {
 data.frame(
   `igraph::constraint()` = round(constraint(strike_g), 3L),
   `extended_ego_constraint()` = extended_ego_constraint(strike_g),
-  `"Whole Network" Constraint` = ucinet_whole_results,
+  `UCINET "Whole Network"` = ucinet_whole_results,
   check.names = FALSE,
   row.names = NULL
 )
 ```
 
-    #>    igraph::constraint() extended_ego_constraint() "Whole Network" Constraint
-    #> 1                 0.953                     0.953                      0.953
-    #> 2                 0.405                     0.405                      0.405
-    #> 3                 1.000                     1.000                      1.000
-    #> 4                 0.866                     0.866                      0.866
-    #> 5                 0.198                     0.198                      0.198
-    #> 6                 0.536                     0.536                      0.536
-    #> 7                 0.482                     0.482                      0.482
-    #> 8                 0.469                     0.469                      0.469
-    #> 9                 0.238                     0.238                      0.238
-    #> 10                0.482                     0.482                      0.482
-    #> 11                0.953                     0.953                      0.953
-    #> 12                0.500                     0.500                      0.500
-    #> 13                0.506                     0.506                      0.506
-    #> 14                0.500                     0.500                      0.500
-    #> 15                0.464                     0.464                      0.464
-    #> 16                0.500                     0.500                      0.500
-    #> 17                0.326                     0.326                      0.326
-    #> 18                0.562                     0.562                      0.562
-    #> 19                0.771                     0.771                      0.771
-    #> 20                0.866                     0.866                      0.866
-    #> 21                0.583                     0.583                      0.583
-    #> 22                0.500                     0.500                      0.500
-    #> 23                0.866                     0.866                      0.866
-    #> 24                0.418                     0.418                      0.418
+    #>    igraph::constraint() extended_ego_constraint() UCINET "Whole Network"
+    #> 1                 0.953                     0.953                  0.953
+    #> 2                 0.405                     0.405                  0.405
+    #> 3                 1.000                     1.000                  1.000
+    #> 4                 0.866                     0.866                  0.866
+    #> 5                 0.198                     0.198                  0.198
+    #> 6                 0.536                     0.536                  0.536
+    #> 7                 0.482                     0.482                  0.482
+    #> 8                 0.469                     0.469                  0.469
+    #> 9                 0.238                     0.238                  0.238
+    #> 10                0.482                     0.482                  0.482
+    #> 11                0.953                     0.953                  0.953
+    #> 12                0.500                     0.500                  0.500
+    #> 13                0.506                     0.506                  0.506
+    #> 14                0.500                     0.500                  0.500
+    #> 15                0.464                     0.464                  0.464
+    #> 16                0.500                     0.500                  0.500
+    #> 17                0.326                     0.326                  0.326
+    #> 18                0.562                     0.562                  0.562
+    #> 19                0.771                     0.771                  0.771
+    #> 20                0.866                     0.866                  0.866
+    #> 21                0.583                     0.583                  0.583
+    #> 22                0.500                     0.500                  0.500
+    #> 23                0.866                     0.866                  0.866
+    #> 24                0.418                     0.418                  0.418
 
 ``` r
 identical(
@@ -333,7 +335,7 @@ identical(
 
 # Maximum Constraint?
 
-Either interpretation can yield values \> 1.
+Either interpretation of Burt’s Constraint can yield values \> 1.
 
 ``` r
 el <- matrix(
