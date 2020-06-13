@@ -333,6 +333,8 @@ identical(
 
 # Maximum Constraint?
 
+Either interpretation can yield values \> 1.
+
 ``` r
 el <- matrix(
   c(1, 2, 
@@ -346,7 +348,7 @@ plot(g)
 <img src="constraint_files/figure-gfm/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 ``` r
-g %>% ego_constraint() %>% unname()
+g %>% ego_constraint()
 ```
 
     #> [1] 1.125 1.125 1.125
@@ -371,7 +373,7 @@ plot(g)
 <img src="constraint_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 ``` r
-g %>% ego_constraint() %>% unname()
+g %>% ego_constraint()
 ```
 
     #> [1] 1.125 1.125 0.611 1.000
@@ -397,7 +399,7 @@ plot(g)
 <img src="constraint_files/figure-gfm/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
 
 ``` r
-g %>% ego_constraint() %>% unname()
+g %>% ego_constraint()
 ```
 
     #> [1] 1.125 1.125 0.611 0.500 1.000
