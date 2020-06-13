@@ -12,7 +12,7 @@ Brendan Knapp
       - [Confirmation](#confirmation-1)
       - [“Whole Network”?](#whole-network-1)
           - [Confirmation](#confirmation-2)
-  - [Maximum Constraint?](#maximum-constraint)
+  - [Maximum Constraint](#maximum-constraint)
 
 ``` r
 library(igraph, warn.conflicts = FALSE)
@@ -354,7 +354,7 @@ data.frame(
 |                0.866 |                       0.866 |                  0.866 |
 |                0.418 |                       0.418 |                  0.418 |
 
-# Maximum Constraint?
+# Maximum Constraint
 
 Either interpretation of Burt’s Constraint can yield values \> 1.
 

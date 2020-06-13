@@ -245,7 +245,7 @@ data.frame(
 
 
 
-# Maximum Constraint?
+# Maximum Constraint
 
 Either interpretation of Burt's Constraint can yield values > 1.
 
