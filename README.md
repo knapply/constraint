@@ -81,8 +81,8 @@ ucinet_ego_results <- c(
 
 ## `{igraph}` Replication
 
-Extract each vertex’s ego network and run `igraph::constraint()` each
-individually.
+Extract each vertex’s ego (order = 1) network and run
+`igraph::constraint()` them individually.
 
 ``` r
 ego_constraint <- function(g, .order = 1L, .round = 3L, .nm = FALSE) {
@@ -246,8 +246,8 @@ identical(
 
 ## “Whole Network”?
 
-What UCINET is calling “Whole Network” is misleading. It’s measuring
-“extended” ego networks.
+What UCINET is calling “Whole Network” is misleading. It’s measuring the
+“extended” ego networks (order = 2).
 
 “Whole Network” may be representative of the other “Whole Network”
 Structural Holes measures is produces, but it’s not relevant to Burt’s
